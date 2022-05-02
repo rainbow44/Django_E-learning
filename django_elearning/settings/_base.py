@@ -9,6 +9,8 @@ import os
 import json
 import sys
 from django.core.exceptions import ImproperlyConfigured
+from django.urls import reverse_lazy
+
 from django_elearning.apps.core.versioning import get_git_changeset_timestamp
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -56,9 +58,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # third-party
     # ...
+    'embed_video',
     # local
     # ...
-    'django_elearning.apps.courses'
+    'django_elearning.apps.courses',
+    'django_elearning.apps.students',
 ]
 
 MIDDLEWARE = [
@@ -156,7 +160,7 @@ STATICFILES_DIRS = [
 ]
 
 
-STATIC_URL = '/static/'
+STATIC_URL = '/site-static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
@@ -166,3 +170,5 @@ EMAIL_HOST = get_secret("EMAIL_HOST")
 EMAIL_PORT = get_secret("EMAIL_PORT")
 EMAIL_HOST_USER = get_secret("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
+
+LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
