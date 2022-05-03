@@ -29,7 +29,7 @@ urlpatterns = [
     path('course/', include('django_elearning.apps.courses.urls')),
     path('', CourseListView.as_view(), name='course_list'),
     path('students/', include('django_elearning.apps.students.urls')),
-
+    path('api/', include('django_elearning.apps.courses.api.urls', namespace='api')),
 ]
 
 if settings.DEBUG:

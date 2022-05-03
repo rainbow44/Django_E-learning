@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     # third-party
     # ...
     'embed_video',
+    'rest_framework',
     # local
     # ...
     'django_elearning.apps.courses',
@@ -172,3 +173,9 @@ EMAIL_HOST_USER = get_secret("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
 
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
